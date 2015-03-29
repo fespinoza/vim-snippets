@@ -94,3 +94,98 @@ endsnippet
 snippet log "Log" b
 console.log ${1:"${2:msg}"}
 endsnippet
+
+snippet _test_factory "Jasmine Angular test for a Factory" b
+describe "$1", ->
+
+  $1 = undefined
+  beforeEach module("$2")
+  beforeEach inject((_$1_) ->
+    $1 = _$1_
+  )
+
+	it "works", ->
+		object = new $1()
+		expect(object).not.toBeUndefined()
+endsnippet
+
+snippet _test_service "Jasmine Angular test for a service" b
+describe "$1", ->
+  $1 = undefined
+  beforeEach module("$2")
+  beforeEach inject((_$1_) -> $1 = _$1_)
+
+	$0
+endsnippet
+
+snippet _test_directive "Jasmine Angular test for a directive" b
+describe "$1 Directive", ->
+
+  scope = undefined
+  element = undefined
+
+  beforeEach module("$2")
+  beforeEach inject(($compile, $rootScope) ->
+    scope = $rootScope.$new()
+    element = $compile([
+      '<$1>'
+      '</$1>'
+    ].join(""))(scope)
+    return
+  )
+
+	it "works", ->
+		scope.$digest()
+		# write an expectation
+		console.log(element)
+endsnippet
+
+snippet _test_filter "Jasmine Anuglar test for a filter" b
+describe "$1", ->
+  $filter = undefined
+
+  beforeEach module("$2")
+  beforeEach inject ((_$filter_) ->
+    $filter = _$filter_
+    return
+  )
+
+  it "works", ->
+		result = $filter("$1")()
+		#expect(result).toEqual()
+endsnippet
+
+snippet _serv "Angular Service" b
+angular
+	.module("${3:moduleName}")
+  .service "$1", (${2:dependencies}) ->
+		$0
+		return
+endsnippet
+
+snippet _dir "Angular directive" b
+angular
+	.module("$3")
+  .directive "$1", (${2:dependencies}) ->
+    #restrict: "E"
+    #replace: true
+    #scope: {}
+    link: (scope, element, attrs) ->
+			$0
+      return
+    #templateUrl: "path_to_template"
+endsnippet
+
+snippet _ctrl "Angular controller" b
+angular
+	.module("$3")
+  .controller "$1Ctrl", (${2:dependencies}) ->
+		$0
+		return
+endsnippet
+
+snippet _const "Angular constant" b
+angular
+	.module("$3")
+  .constant "$1", ${2:value}
+endsnippet
