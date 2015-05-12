@@ -189,3 +189,20 @@ angular
 	.module("$3")
   .constant "$1", ${2:value}
 endsnippet
+
+snippet _fact "Angular factory" b
+angular
+	.module("$4")
+  .factory "$1", (${2:value}) ->
+		class ${3:ClassName}
+			$5
+		return $3
+endsnippet
+
+snippet _filt "Angular filter" b
+angular
+	.module("$1")
+  .filter "$2", (${3:dependencies}) ->
+		return (${5:input}) ->
+			$5
+endsnippet

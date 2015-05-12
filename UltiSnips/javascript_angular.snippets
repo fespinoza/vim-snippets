@@ -75,3 +75,74 @@ service('${1:name}', [${2:'$scope', }function(${2/('|")([A-Z_$]+)?\1?((, ?)$)?/$
 	$0
 }]);
 endsnippet
+
+snippet _ctrl "Description" b
+'use strict';
+
+class ${1:NameCtrl} {
+  constructor() {
+		$2
+  }
+}
+
+$1.$inject = [];
+
+export default $1;
+endsnippet
+
+snippet _test_service "Test an angular service with jasmine" b
+'use strict';
+
+describe('${1:Service}', function() {
+  var $1;
+
+  beforeEach(module('${2:moduleName}'));
+  beforeEach(inject(function(_$1_) {
+    $1 = _$1_;
+  }));
+
+  $0
+
+});
+endsnippet
+
+snippet _test_directive "Test an angular directive with jasmine" b
+'use strict';
+
+describe('${1:directiveName} Directive', function() {
+  var scope, element;
+
+  beforeEach(module('${2:moduleName}'));
+
+  beforeEach(inject(function($compile, $rootScope) {
+    scope = $rootScope.$new();
+    element = $compile([
+      '<${3:directiveTag}>',
+      '</$3>'
+    ].join(''))(scope);
+  }));
+
+  it('works', function() {
+    scope.$digest();
+		// write expectations then
+		$0
+  });
+});
+endsnippet
+
+snippet _service "Angular service" b
+'use strict';
+
+var $2;
+
+class ${1:ServiceClass} {
+  constructor(_$2) {
+		$2 = _$2;
+		$0
+  }
+}
+
+$1.$inject = ['${2:dependency}'];
+
+export default $1;
+endsnippet

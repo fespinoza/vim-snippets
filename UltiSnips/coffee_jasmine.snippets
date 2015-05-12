@@ -8,13 +8,13 @@ extends coffee
 
 priority -49
 
-snippet des "Describe (coffee)" b
-describe '${1:description}', ->
+snippet desc "Describe (coffee)" b
+describe "${1:description}", ->
 	$0
 endsnippet
 
 snippet it "it (coffee)" b
-it '${1:description}', ->
+it "${1:description}", ->
 	$0
 endsnippet
 
@@ -163,4 +163,8 @@ endsnippet
 
 snippet noscw "expect was not called with (coffee)" b
 expect(${1:target}).wasNotCalledWith(${2:arguments})
+endsnippet
+
+snippet expect "simple expectation" b
+expect(${1:object}).toEqual(${2:value})
 endsnippet
