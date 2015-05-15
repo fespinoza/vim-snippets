@@ -146,3 +146,26 @@ $1.$inject = ['${2:dependency}'];
 
 export default $1;
 endsnippet
+
+snippet _directive "Angular directive ES6" b
+'use strict';
+
+class ${1:Name}Directive {
+  constructor() {
+    //this.restrict = 'E';
+    //this.templateUrl = 'components/visual_select/visual_select.html';
+    //this.controller = VisualSelectCtrl;
+    //this.controllerAs = 'select';
+		//this.bindToController = true;
+    this.scope = {};
+  }
+
+  static factory() {
+    return new $1Directive();
+  }
+}
+
+$1Directive.$inject = [];
+
+export default $1Directive;
+endsnippet
