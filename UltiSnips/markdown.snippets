@@ -53,4 +53,55 @@ endsnippet
 snippet cl "checkbox" b
 - [ ] $0
 endsnippet
+snippet api "API Description" b
+# ${1:Resource} APIs
+
+## ${2:Http Method} ${3:Endpoint}
+
+* context example
+  * behavior in this context
+$0
+endsnippet
+
+snippet endp "Endpoint case Request/Response" b
+### ${1:Case title}
+
+#### Request
+
+Url
+\`\`\`
+${2:method and url}
+\`\`\`
+
+Headers
+\`\`\`
+Accept-Language:
+Accept:
+${3:request headers}
+\`\`\`
+
+Body
+\`\`\`json
+${4:request body}
+\`\`\`
+
+#### Response
+
+Status
+\`\`\`
+${5:response status}
+\`\`\`
+
+Headers
+\`\`\`
+Content-Type:
+${6:reponse headers}
+\`\`\`
+
+Body
+\`\`\`json
+${7:response body}
+\`\`\`
+endsnippet
+
 # vim:ft=snippets:
